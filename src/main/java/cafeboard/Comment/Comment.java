@@ -1,6 +1,6 @@
-package cafeboard.Post;
+package cafeboard.Comment;
 
-import cafeboard.Board.Board;
+import cafeboard.Post.Post;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -8,23 +8,22 @@ import org.springframework.data.annotation.LastModifiedDate;
 import java.time.LocalDateTime;
 
 @Entity
-public class Post {
+public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     @ManyToOne
-    private Board board;
+    private Post post;
     @CreatedDate
     private LocalDateTime createdAt;
 
     @LastModifiedDate
     private LocalDateTime updatedAt;
 
-    public Post( String name, Board board) {
-
+    public Comment(String name, Post post) {
         this.name = name;
-        this.board = board;
+        this.post = post;
     }
 
     public Long getId() {
@@ -35,8 +34,8 @@ public class Post {
         return name;
     }
 
-    public Board getBoard() {
-        return board;
+    public Post getPost() {
+        return post;
     }
 
     public LocalDateTime getCreatedAt() {
