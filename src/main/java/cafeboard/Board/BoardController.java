@@ -1,8 +1,8 @@
 package cafeboard.Board;
 
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 public class BoardController {
@@ -16,5 +16,17 @@ public class BoardController {
     @PostMapping("/api/boards")
     void create(@RequestBody BoardRequest request){
         boardService.save(request);
+    }
+    //** 목록조회 api
+    @GetMapping("/api/boards")
+    List<BoardResponse> read(){
+        return boardService.findAll();
+
+    }
+    //** 수정 api
+    @PostMapping("api/boards/{id}")
+    void update(@PathVariable Long id,@RequestBody BoardRequest request ){
+        boardService.update(id,request);
+
     }
 }

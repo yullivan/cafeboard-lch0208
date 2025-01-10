@@ -42,4 +42,8 @@ public class Board {
     public LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
+
+    public void update(BoardRequest request) {
+
+    }
 }

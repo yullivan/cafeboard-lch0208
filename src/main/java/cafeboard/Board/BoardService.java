@@ -28,4 +28,11 @@ public class BoardService {
                 .toList();
     }
 
+
+    public void update(Long id, BoardRequest request) {
+        Board board = boardRepository.findById(id).orElseThrow();
+        board.update(request);
+
+
+    }
 }
