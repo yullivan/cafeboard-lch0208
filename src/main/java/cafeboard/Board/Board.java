@@ -1,20 +1,23 @@
 package cafeboard.Board;
 
 import cafeboard.Post.Post;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 @Entity
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @OneToMany(mappedBy = "posts")
+    private List<Post> posts;
+
 
     @CreatedDate
     private LocalDateTime createdAt;
@@ -43,7 +46,7 @@ public class Board {
         return updatedAt;
     }
 
-    public void update(BoardRequest request) {
-
+    public void update(String name) {
+        this.name = name;
     }
 }

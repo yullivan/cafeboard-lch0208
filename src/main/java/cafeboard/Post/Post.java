@@ -14,6 +14,7 @@ public class Post {
     private Long id;
     private String name;
     @ManyToOne
+    @JoinColumn(name = "board_id")
     private Board board;
     @CreatedDate
     private LocalDateTime createdAt;
@@ -31,8 +32,7 @@ public class Post {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getName() {return name;
     }
 
     public Board getBoard() {

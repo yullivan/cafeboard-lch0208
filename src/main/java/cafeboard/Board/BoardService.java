@@ -1,6 +1,7 @@
 package cafeboard.Board;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -10,14 +11,16 @@ public class BoardService {
 
     private final BoardRepository boardRepository;
 
-    public  void save(BoardRequest request) {
-
-        BoardRepository boardRepository;
-
-    }
     public BoardService(BoardRepository boardRepository) {
         this.boardRepository = boardRepository;
     }
+
+    public  void save(BoardRequest request) {
+
+        boardRepository.save(new Board(request.name()));
+
+    }
+
     public List<BoardResponse> findAll(){
         List<Board> boards = boardRepository.findAll();
         return boards.stream()
@@ -28,11 +31,9 @@ public class BoardService {
                 .toList();
     }
 
-
+    @Transactional
     public void update(Long id, BoardRequest request) {
         Board board = boardRepository.findById(id).orElseThrow();
-        board.update(request);
-
-
+        board.update(request.name());
     }
 }
