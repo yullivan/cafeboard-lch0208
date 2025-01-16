@@ -5,8 +5,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.List;
+
 public class PostController {
     private PostService postService;
+
+    public PostController(PostService postService) {
+        this.postService = postService;
+    }
 
     //**게시글 생성 api
     @PostMapping("/api/posts")
@@ -15,7 +21,7 @@ public class PostController {
     }
 
     //**게시글 상세조회 api
-    @GetMapping()
+    @GetMapping("/api/posts")
     public PostResponse findById(@PathVariable Long PostId){
         return new PostResponse(
                 1L,
@@ -23,7 +29,15 @@ public class PostController {
 
         );
 
+
     }
+
+    //**게시글 목록조회 api
+    @GetMapping("/api/posts/{id}")
+    public List<PostResponse>read(){
+        return postService.findAll();
+    }
+
 
 }
 

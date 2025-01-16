@@ -15,7 +15,7 @@ public class Board {
     private Long id;
     private String name;
 
-    @OneToMany(mappedBy = "posts")
+    @OneToMany(mappedBy = "board")
     private List<Post> posts;
 
 

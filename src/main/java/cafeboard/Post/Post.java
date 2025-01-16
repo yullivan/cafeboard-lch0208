@@ -12,10 +12,13 @@ public class Post {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     @ManyToOne
-    @JoinColumn(name = "board_id")
+    @JoinColumn(nullable = false)
     private Board board;
+
     @CreatedDate
     private LocalDateTime createdAt;
 
