@@ -40,6 +40,7 @@ public class PostService {
 
 
     public List<PostResponse> findAll() {
+        return List.of();
 
     }
 }
