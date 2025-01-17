@@ -1,0 +1,12 @@
+
+<mapper namespace="cafeboard.Post.PostMapper">
+    <select id="findAll" resultType="cafeboard.Post.Post">
+        SELECT id, title, content, create_at, updated_at
+        FROM post
+        <where>
+            <if test="boardId ! = null">
+            and board_id = #{boardId}
+            </if>
+        </where>
+    </select>
+</mapper>

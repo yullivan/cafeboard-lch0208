@@ -32,7 +32,7 @@ public class PostService {
     }
 
     public PostResponse findById(Long postId) {
-        //**postid 에 해당하는 포스트 조회
+        //**postId 에 해당하는 포스트 조회
         Post post = postRepository . findById(postId).orElseThrow();
 
             return new PostResponse(post.getId(), post.getName());

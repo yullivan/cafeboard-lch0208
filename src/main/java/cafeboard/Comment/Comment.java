@@ -1,6 +1,7 @@
 package cafeboard.Comment;
 
 import cafeboard.Post.Post;
+import cafeboard.member.Member;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -13,6 +14,9 @@ public class Comment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+
+    @ManyToOne
+    private Member member;
     @ManyToOne
     private Post post;
     @CreatedDate

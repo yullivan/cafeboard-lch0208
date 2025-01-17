@@ -1,6 +1,7 @@
 package cafeboard.Post;
 
 import cafeboard.Board.Board;
+import cafeboard.member.Member;
 import jakarta.persistence.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -14,6 +15,8 @@ public class Post {
     private Long id;
 
     private String name;
+    @ManyToOne
+    private Member member;
 
     @ManyToOne
     @JoinColumn(nullable = false)
