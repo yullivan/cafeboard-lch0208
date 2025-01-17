@@ -13,6 +13,11 @@ public class MemberService {
     public void login(LoginRequest loginRequest){
 
 
-//        Member member = MemberRepository.findById(loginRequest.loginId(),loginRequest.password());
+        Member member = memberRepository.findByLoginId(loginRequest.loginId())
+                .orElseThrow();
+        if (!member.getPassword().equals(loginRequest.password())) {
+            throw new IllegalArgumentException("에러");
+        }
+
     }
 }
