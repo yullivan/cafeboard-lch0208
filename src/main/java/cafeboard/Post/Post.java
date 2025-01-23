@@ -21,6 +21,7 @@ public class Post {
     @ManyToOne
     @JoinColumn(nullable = false)
     private Board board;
+    private
 
     @CreatedDate
     private LocalDateTime createdAt;

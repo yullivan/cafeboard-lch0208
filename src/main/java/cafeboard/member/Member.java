@@ -25,4 +25,10 @@ public class Member {
     public String getPassword() {
         return password;
     }
+
+    public Member(Long id, String loginId, String password) {
+        this.id = id;
+        this.loginId = loginId;
+        this.password = password;
+    }
 }

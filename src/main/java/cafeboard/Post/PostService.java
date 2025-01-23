@@ -37,9 +37,8 @@ public class PostService {
 
             return new PostResponse(post.getId(), post.getName());
      }
-
-
-    public List<PostResponse> findAll() {
+     //**리뷰조회 서비스 로직
+     public List<PostResponse> findAll() {
         return List.of();
 
     }
